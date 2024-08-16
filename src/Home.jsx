@@ -1,4 +1,5 @@
 import { MdOutlineArrowRight } from "react-icons/md";
+import Products from "./component/Products";
 
 const Home = () => {
     return (
@@ -28,19 +29,19 @@ const Home = () => {
                             type="number"
                             placeholder="min"
                             className="border border-slate-200 w-1/3" />
-                            <span>to</span>
+                        <span>to</span>
                         <input
                             type="number"
                             placeholder="max"
                             className="border border-slate-200 w-1/3" />
-                            
+
                         <MdOutlineArrowRight className="text-xl"></MdOutlineArrowRight>
                     </form>
                 </div>
             </div>
 
             <div className="grid-cols-4">
-                product
+                <Products></Products>
             </div>
         </div>
     );

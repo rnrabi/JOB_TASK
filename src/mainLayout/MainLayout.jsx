@@ -8,7 +8,6 @@ const MainLayout = () => {
         <div className="md:w-11/12 mx-auto">
             <Navber></Navber>
             <Home></Home>
-            This is home
         </div>
     );
 };
