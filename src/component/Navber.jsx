@@ -1,11 +1,11 @@
-
+import { LuSearch } from "react-icons/lu";
 
 const Navber = () => {
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-slate-100 shadow-lg">
                 <div className="flex-1">
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    <a className="btn btn-ghost text-xl">Logo</a>
                 </div>
 
                 <div className="flex-none gap-2">
@@ -18,8 +18,9 @@ const Navber = () => {
                         </select>
                     </div>
 
-                    <div className="form-control">
+                    <div className="form-control relative">
                         <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
+                        <LuSearch className="absolute right-2 top-1/3 text-xl"></LuSearch>
                     </div>
 
                     <div className="dropdown dropdown-end">
@@ -47,6 +48,7 @@ const Navber = () => {
                 </div>
 
             </div>
+            
         </div>
     );
 };
