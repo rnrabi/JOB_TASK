@@ -5,7 +5,8 @@ import Home from "../Home";
 
 
 const MainLayout = () => {
-    const [search, setSearch] = useState('')
+    const [search, setSearch] = useState('');
+    const [sort ,setSort] = useState('')
 
     return (
         <div className="md:w-11/12 mx-auto">
@@ -13,10 +14,13 @@ const MainLayout = () => {
             <Navber
                 search={search}
                 setSearch={setSearch}
+                sort={sort}
+                setSort={setSort}
             ></Navber>
 
             <Home
                 search={search}
+                sort={sort}
             ></Home>
 
         </div>

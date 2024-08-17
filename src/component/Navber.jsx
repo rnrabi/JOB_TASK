@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { LuSearch } from "react-icons/lu";
 
-const Navber = ({search , setSearch }) => {
+const Navber = ({ search, setSearch , sort , setSort }) => {
 
 
     const handleSearch = async () => {
@@ -11,6 +11,11 @@ const Navber = ({search , setSearch }) => {
 
 
         // setSearch('')
+    }
+
+    const handlePrice = (priceOrder) => {
+        console.log(priceOrder)
+        setSort(priceOrder)
     }
 
 
@@ -24,10 +29,10 @@ const Navber = ({search , setSearch }) => {
                 <div className="flex-none gap-2">
                     <div className="flex items-center">
                         <span> sort by</span>
-                        <select className="select select-bordered w-full max-w-xs">
-                            <option disabled selected>Newest first</option>
-                            <option>Price low to high</option>
-                            <option>Price high to low</option>
+                        <select onClick={(e) => handlePrice(e.target.value)} className="select select-bordered w-full max-w-xs">
+                            <option value='new'>Newest first</option>
+                            <option value='dsc'>Price low to high</option>
+                            <option value='asc'>Price high to low</option>
                         </select>
                     </div>
 
