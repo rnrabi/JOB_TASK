@@ -1,11 +1,23 @@
 import { MdOutlineArrowRight } from "react-icons/md";
 import Products from "./component/Products";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+
 
 const Home = () => {
-    return (
-        <div className="grid grid-cols-6 gap-2 min-h-screen">
+    const { data: products = [] } = useQuery({
+        queryKey: ['products'],
+        queryFn: async () => {
+            const { data } = await axios('http://localhost:5000/products');
+            return data;
+        }
+    })
+    console.log(products)
 
-            <div className="grid-cols-2 border-r-2">
+    return (
+        <div className="md:flex gap-3 min-h-screen">
+
+            <div className="md:w-1/6 border-r-2">
                 <span>Brand Name</span>
                 <select className="select select-ghost w-full max-w-xs mb-4">
                     <option disabled selected>Pick the best JS framework</option>
@@ -40,8 +52,15 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className="grid-cols-4">
-                <Products></Products>
+            <div className="flex-1">
+                <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    {
+                        products?.map(product => <Products
+                            key={product._id}
+                        ></Products>)
+                    }
+                </div>
+
             </div>
         </div>
     );
