@@ -7,11 +7,12 @@ import { useState } from "react";
 
 const Home = ({ search, sort }) => {
     const [brandName, setBrandName] = useState('')
+    const [category, setCategory] = useState('')
 
     const { data: products = [] } = useQuery({
-        queryKey: ['products', search, sort, brandName],
+        queryKey: ['products', search, sort, brandName, category],
         queryFn: async () => {
-            const { data } = await axios.get(`http://localhost:5000/products?search=${search}&sort=${sort}&brandName=${brandName}`);
+            const { data } = await axios.get(`http://localhost:5000/products?search=${search}&sort=${sort}&brandName=${brandName}&category=${category}`);
             return data;
         }
     })
@@ -20,6 +21,11 @@ const Home = ({ search, sort }) => {
     const handleBrandName = (brandName) => {
         console.log(brandName)
         setBrandName(brandName)
+    }
+
+    const handleCategory = (category) => {
+        console.log(category)
+        setCategory(category)
     }
 
 
@@ -37,11 +43,11 @@ const Home = ({ search, sort }) => {
                 </select>
 
                 <span>Category Name</span>
-                <select className="select select-ghost w-full max-w-xs mb-4">
+                <select onClick={(e) => handleCategory(e.target.value)} className="select select-ghost w-full max-w-xs mb-4">
                     <option>Watches</option>
-                    <option>other</option>
-                    <option>other</option>
-                    <option>other</option>
+                    <option>phone</option>
+                    <option>other2</option>
+                    <option>other3</option>
                 </select>
 
                 <span>Price Range</span>
