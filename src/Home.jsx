@@ -2,36 +2,46 @@ import { MdOutlineArrowRight } from "react-icons/md";
 import Products from "./component/Products";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useState } from "react";
 
 
 const Home = ({ search, sort }) => {
+    const [brandName, setBrandName] = useState('')
+
     const { data: products = [] } = useQuery({
-        queryKey: ['products', search, sort],
+        queryKey: ['products', search, sort, brandName],
         queryFn: async () => {
-            const { data } = await axios.get(`http://localhost:5000/products?search=${search}&sort=${sort}`);
+            const { data } = await axios.get(`http://localhost:5000/products?search=${search}&sort=${sort}&brandName=${brandName}`);
             return data;
         }
     })
     console.log(products)
+
+    const handleBrandName = (brandName) => {
+        console.log(brandName)
+        setBrandName(brandName)
+    }
+
 
     return (
         <div className="md:flex gap-3 min-h-screen mt-4">
 
             <div className="md:w-1/6 border-r-2">
                 <span>Brand Name</span>
-                <select className="select select-ghost w-full max-w-xs mb-4">
-                    <option disabled selected>Pick the best JS framework</option>
-                    <option>Svelte</option>
-                    <option>Vue</option>
-                    <option>React</option>
+                <select onClick={(e) => handleBrandName(e.target.value)} className="select select-ghost w-full max-w-xs mb-4">
+                    <option>PrimeTech</option>
+                    <option>NextGen</option>
+                    <option>GizmoWorks</option>
+                    <option>Innova</option>
+                    <option>TechCo</option>
                 </select>
 
                 <span>Category Name</span>
                 <select className="select select-ghost w-full max-w-xs mb-4">
-                    <option disabled selected>Pick the best JS framework</option>
-                    <option>Svelte</option>
-                    <option>Vue</option>
-                    <option>React</option>
+                    <option>Watches</option>
+                    <option>other</option>
+                    <option>other</option>
+                    <option>other</option>
                 </select>
 
                 <span>Price Range</span>
