@@ -4,11 +4,11 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 
-const Home = () => {
+const Home = ({search}) => {
     const { data: products = [] } = useQuery({
-        queryKey: ['products'],
+        queryKey: ['products', search],
         queryFn: async () => {
-            const { data } = await axios('http://localhost:5000/products');
+            const { data } = await axios.get(`http://localhost:5000/products?search=${search}`);
             return data;
         }
     })

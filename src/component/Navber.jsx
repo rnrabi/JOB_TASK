@@ -1,6 +1,19 @@
+import axios from "axios";
+import { useState } from "react";
 import { LuSearch } from "react-icons/lu";
 
-const Navber = () => {
+const Navber = ({search , setSearch }) => {
+
+
+    const handleSearch = async () => {
+        console.log('click handle search', search)
+        const res = await axios.get(`http://localhost:5000/products?search=${search}`)
+
+
+        // setSearch('')
+    }
+
+
     return (
         <div>
             <div className="navbar bg-slate-100 shadow-lg">
@@ -19,8 +32,16 @@ const Navber = () => {
                     </div>
 
                     <div className="form-control relative">
-                        <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
-                        <LuSearch className="absolute right-2 top-1/3 text-xl"></LuSearch>
+                        <input onChange={e => setSearch(e.target.value)} type="text" name="search" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
+                        <button
+                            onClick={handleSearch}
+                            aria-label="Search"
+                            className="absolute right-2 top-1/2 transform -translate-y-1/2"
+                        >
+                            <LuSearch className="text-xl" />
+                        </button>
+
+                        {/* <LuSearch onClick={handleSearch} className="absolute right-2 top-1/3 text-xl"></LuSearch> */}
                     </div>
 
                     <div className="dropdown dropdown-end">
@@ -48,7 +69,7 @@ const Navber = () => {
                 </div>
 
             </div>
-            
+
         </div>
     );
 };
