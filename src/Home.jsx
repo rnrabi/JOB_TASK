@@ -15,7 +15,7 @@ const Home = () => {
     console.log(products)
 
     return (
-        <div className="md:flex gap-3 min-h-screen">
+        <div className="md:flex gap-3 min-h-screen mt-4">
 
             <div className="md:w-1/6 border-r-2">
                 <span>Brand Name</span>
@@ -57,6 +57,7 @@ const Home = () => {
                     {
                         products?.map(product => <Products
                             key={product._id}
+                            product={product}
                         ></Products>)
                     }
                 </div>
