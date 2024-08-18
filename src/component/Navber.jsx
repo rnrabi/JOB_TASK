@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 import { LuSearch } from "react-icons/lu";
+import { NavLink } from "react-router-dom";
 
-const Navber = ({ search, setSearch , sort , setSort }) => {
+const Navber = ({ search, setSearch, sort, setSort }) => {
 
 
     const handleSearch = async () => {
@@ -23,7 +24,10 @@ const Navber = ({ search, setSearch , sort , setSort }) => {
         <div>
             <div className="navbar bg-slate-100 shadow-lg">
                 <div className="flex-1">
-                    <a className="btn btn-ghost text-xl">Logo</a>
+                    <a className="btn btn-ghost text-xl mr-10">Logo</a>
+                    <NavLink to='/' className="mr-3">Home</NavLink>
+                    <NavLink to='/register' className="mr-3">Register</NavLink>
+                    <NavLink to='/login'>Log in</NavLink>
                 </div>
 
                 <div className="flex-none gap-2">
@@ -46,7 +50,6 @@ const Navber = ({ search, setSearch , sort , setSort }) => {
                             <LuSearch className="text-xl" />
                         </button>
 
-                        {/* <LuSearch onClick={handleSearch} className="absolute right-2 top-1/3 text-xl"></LuSearch> */}
                     </div>
 
                     <div className="dropdown dropdown-end">
@@ -61,12 +64,8 @@ const Navber = ({ search, setSearch , sort , setSort }) => {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                             <li>
-                                <a className="justify-between">
-                                    Profile
-                                    <span className="badge">New</span>
-                                </a>
+                                <a className="justify-between">Profile</a>
                             </li>
-                            <li><a>Settings</a></li>
                             <li><a>Logout</a></li>
                         </ul>
                     </div>
