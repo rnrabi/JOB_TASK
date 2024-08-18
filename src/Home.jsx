@@ -59,8 +59,7 @@ const Home = ({ search, sort }) => {
                     <select onClick={(e) => handleCategory(e.target.value)} className="select select-ghost w-full max-w-xs mb-4">
                         <option>Watches</option>
                         <option>phone</option>
-                        <option>other2</option>
-                        <option>other3</option>
+                        <option>laptop</option>
                     </select>
 
                     <span>Price Range</span>
