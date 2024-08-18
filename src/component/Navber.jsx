@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import { LuSearch } from "react-icons/lu";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contextApi/ContextProvider";
 
 const Navber = ({ search, setSearch, sort, setSort }) => {
@@ -34,7 +34,7 @@ const Navber = ({ search, setSearch, sort, setSort }) => {
         <div>
             <div className="navbar bg-slate-100 shadow-lg">
                 <div className="flex-1">
-                    <a className="btn btn-ghost text-xl mr-10">Logo</a>
+                    <Link to='/' className="btn btn-ghost text-xl mr-10">WatchWave</Link>
                     <NavLink to='/' className="mr-3">Home</NavLink>
                     <NavLink to='/register' className="mr-3">Register</NavLink>
                     <NavLink to='/login'>Log in</NavLink>

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Navber from "../component/Navber";
 import Home from "../Home";
+import Footer from "../component/Footer";
 
 
 const MainLayout = () => {
@@ -22,6 +23,7 @@ const MainLayout = () => {
                 search={search}
                 sort={sort}
             ></Home>
+            <Footer></Footer>
 
         </div>
     );
