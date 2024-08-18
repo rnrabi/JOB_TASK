@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LuSearch } from "react-icons/lu";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../contextApi/ContextProvider";
 
 const Navber = ({ search, setSearch, sort, setSort }) => {
-
+    const { logOutUser } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleSearch = async () => {
         console.log('click handle search', search)
@@ -17,6 +19,14 @@ const Navber = ({ search, setSearch, sort, setSort }) => {
     const handlePrice = (priceOrder) => {
         console.log(priceOrder)
         setSort(priceOrder)
+    }
+
+    const handleLogOut = () => {
+        logOutUser()
+            .then(() => {
+                navigate('/login')
+            })
+            .catch(e => console.log(e.message))
     }
 
 
@@ -66,7 +76,7 @@ const Navber = ({ search, setSearch, sort, setSort }) => {
                             <li>
                                 <a className="justify-between">Profile</a>
                             </li>
-                            <li><a>Logout</a></li>
+                            <li><button onClick={handleLogOut}>Logout</button></li>
                         </ul>
                     </div>
 
