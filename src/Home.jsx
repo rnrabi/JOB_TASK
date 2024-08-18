@@ -14,19 +14,19 @@ const Home = ({ search, sort }) => {
     const { data: products = [] } = useQuery({
         queryKey: ['products', search, sort, brandName, category, minPrice, maxPrice],
         queryFn: async () => {
-            const { data } = await axios.get(`http://localhost:5000/products?search=${search}&sort=${sort}&brandName=${brandName}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}`);
+            const { data } = await axios.get(`https://job-task-server-eight-gold.vercel.app/products?search=${search}&sort=${sort}&brandName=${brandName}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}`);
             return data;
         }
     })
-    console.log(products)
+    // console.log(products)
    
     const handleBrandName = (brandName) => {
-        console.log(brandName)
+        // console.log(brandName)
         setBrandName(brandName)
     }
 
     const handleCategory = (category) => {
-        console.log(category)
+        // console.log(category)
         setCategory(category)
     }
 
@@ -34,7 +34,7 @@ const Home = ({ search, sort }) => {
         e.preventDefault()
         const minPrice = e.target.minPrice.value;
         const maxPrice = e.target.maxPrice.value;
-        console.log(minPrice, maxPrice)
+        // console.log(minPrice, maxPrice)
         setMinPrice(minPrice);
         setMaxPrice(maxPrice);
     }

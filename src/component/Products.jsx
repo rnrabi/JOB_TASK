@@ -2,7 +2,7 @@
 
 
 const Products = ({ product }) => {
-    console.log(product)
+    // console.log(product)
     const {_id, BrandName, Category, Description, Price, ProductCreationDate, ProductImage, ProductName, Ratings } = product;
 
     return (

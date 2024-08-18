@@ -9,15 +9,12 @@ const Navber = ({ search, setSearch, sort, setSort }) => {
     const navigate = useNavigate()
 
     const handleSearch = async () => {
-        console.log('click handle search', search)
-        const res = await axios.get(`http://localhost:5000/products?search=${search}`)
-
+        const res = await axios.get(`https://job-task-server-eight-gold.vercel.app/products?search=${search}`)
 
         // setSearch('')
     }
 
     const handlePrice = (priceOrder) => {
-        console.log(priceOrder)
         setSort(priceOrder)
     }
 

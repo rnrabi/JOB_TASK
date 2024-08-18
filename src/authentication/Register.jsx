@@ -13,7 +13,7 @@ const Register = () => {
         const name = e.target.username.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name, email, password)
+        // console.log(name, email, password)
         signUpUser(email, password)
             .then(result => {
                 console.log(result.user)
