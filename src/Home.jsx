@@ -10,15 +10,7 @@ const Home = ({ search, sort }) => {
     const [category, setCategory] = useState('')
     const [minPrice, setMinPrice] = useState(null)
     const [maxPrice, setMaxPrice] = useState(null)
-    // pagination ...... 
-    // const [count, setCount] = useState(0)
-    // const [itemPerPage, setItemPerPage] = useState(5)
-    // const [currentPage, setCurrentPage] = useState(1)
-    // const pageNumber = Math.ceil(count / itemPerPage)
-    // console.log(pageNumber)
-    // const pages = [...Array(pageNumber).keys()].map(element => element + 1)
-    //console.log(pages)
-
+   
     const { data: products = [] } = useQuery({
         queryKey: ['products', search, sort, brandName, category, minPrice, maxPrice],
         queryFn: async () => {
@@ -27,15 +19,7 @@ const Home = ({ search, sort }) => {
         }
     })
     console.log(products)
-    // useEffect(() => {
-    //     const getCountData = async () => {
-    //         const { data } = await axios.get(`/products-count?search=${search}`)
-    //         setCount(data?.count)
-    //         console.log(data?.count)
-    //     }
-    //     getCountData()
-    // }, [search])
-
+   
     const handleBrandName = (brandName) => {
         console.log(brandName)
         setBrandName(brandName)
@@ -55,12 +39,7 @@ const Home = ({ search, sort }) => {
         setMaxPrice(maxPrice);
     }
 
-    // pagenation function 
-    const handlePage = (value) => {
-        // //console.log(value)
-        setCurrentPage(value)
-    }
-
+   
 
     return (
         <>

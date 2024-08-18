@@ -15,7 +15,11 @@ const Register = () => {
         const password = e.target.password.value;
         console.log(name, email, password)
         signUpUser(email, password)
-        navigate('/')
+            .then(result => {
+                console.log(result.user)
+                navigate('/')
+            })
+            .catch(error => console.log(error.message))
     }
 
     const handleGoogleLogIn = () => {
